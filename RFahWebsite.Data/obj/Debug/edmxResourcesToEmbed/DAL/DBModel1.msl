@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RFahDBModelStoreContainer" CdmEntityContainer="RFahDBEntities">
+    <EntitySetMapping Name="TblBrands">
+      <EntityTypeMapping TypeName="RFahDBModel.TblBrand">
+        <MappingFragment StoreEntitySet="TblBrand">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="CatId" ColumnName="CatId" />
+          <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblCategories">
+      <EntityTypeMapping TypeName="RFahDBModel.TblCategory">
+        <MappingFragment StoreEntitySet="TblCategory">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblProducts">
+      <EntityTypeMapping TypeName="RFahDBModel.TblProduct">
+        <MappingFragment StoreEntitySet="TblProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="CatId" ColumnName="CatId" />
+          <ScalarProperty Name="BrdId" ColumnName="BrdId" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="Prd_Barcode" ColumnName="Prd_Barcode" />
+          <ScalarProperty Name="Prd_FacCode" ColumnName="Prd_FacCode" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Mod_Text" ColumnName="Mod_Text" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblProDetails">
+      <EntityTypeMapping TypeName="RFahDBModel.TblProDetail">
+        <MappingFragment StoreEntitySet="TblProDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PrdId" ColumnName="PrdId" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblProRelImgs">
+      <EntityTypeMapping TypeName="RFahDBModel.TblProRelImg">
+        <MappingFragment StoreEntitySet="TblProRelImg">
+          <ScalarProperty Name="RPrdImgD" ColumnName="RPrdImgD" />
+          <ScalarProperty Name="PrdID" ColumnName="PrdID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblRelProducts">
+      <EntityTypeMapping TypeName="RFahDBModel.TblRelProduct">
+        <MappingFragment StoreEntitySet="TblRelProduct">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PrdId" ColumnName="PrdId" />
+          <ScalarProperty Name="RelatedPrdId" ColumnName="RelatedPrdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

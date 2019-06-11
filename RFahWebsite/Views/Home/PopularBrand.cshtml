@@ -1,0 +1,29 @@
+﻿
+@model IEnumerable<RFahWebsite.Data.DAL.TblBrand>
+
+
+<div class="brands">
+    <div class="container">
+        <div class="title-group1">
+            <h2>popular brand</h2>
+        </div>
+
+
+        <div id="brands" class="owl-container">
+            <div class="owl">
+
+                @foreach (var item in Model)
+                {
+                    <div class='item'>
+                        <div class="item-innner">
+                            <a href="#" title=""> <img src="~/Content/WebsiteAsset/images/brand/logo_brand5.png" alt="" />@item.Name</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+    </div>
+</div><!-- /.brands -->

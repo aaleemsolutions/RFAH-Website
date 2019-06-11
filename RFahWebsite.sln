@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFahWebsite", "RFahWebsite\RFahWebsite.csproj", "{C6942098-E617-4514-8D1B-200EAAD41EAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFahWebsite.Data", "RFahWebsite.Data\RFahWebsite.Data.csproj", "{92F04F1C-4DD3-44E7-B804-FD204DBA466A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6942098-E617-4514-8D1B-200EAAD41EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6942098-E617-4514-8D1B-200EAAD41EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6942098-E617-4514-8D1B-200EAAD41EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6942098-E617-4514-8D1B-200EAAD41EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F04F1C-4DD3-44E7-B804-FD204DBA466A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F04F1C-4DD3-44E7-B804-FD204DBA466A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F04F1C-4DD3-44E7-B804-FD204DBA466A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F04F1C-4DD3-44E7-B804-FD204DBA466A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6284014-8AAD-42DB-916E-480BAA1BA0CA}
+	EndGlobalSection
+EndGlobal

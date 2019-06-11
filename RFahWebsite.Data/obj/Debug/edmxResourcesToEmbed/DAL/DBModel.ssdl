@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RFahDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AppUser" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="UserContact" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="TblBrand">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Img" Type="nvarchar" MaxLength="120" />
+    <Property Name="CatId" Type="int" Nullable="false" />
+    <Property Name="Isactive" Type="bit" Nullable="false" />
+    <Property Name="Created" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TblCategory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar" MaxLength="120" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="Isactive" Type="bit" Nullable="false" />
+    <Property Name="Created" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblProDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TblProDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="PrdId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrdId" Type="int" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar(max)" />
+    <Property Name="Color" Type="nvarchar" MaxLength="100" />
+    <Property Name="Style" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="TblProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar" MaxLength="300" />
+    <Property Name="CatId" Type="int" />
+    <Property Name="BrdId" Type="int" Nullable="false" />
+    <Property Name="Img" Type="nvarchar" MaxLength="300" />
+    <Property Name="Prd_Barcode" Type="nvarchar" MaxLength="100" />
+    <Property Name="Prd_FacCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Modified" Type="datetime" />
+    <Property Name="Mod_Text" Type="nvarchar(max)" />
+    <Property Name="Status" Type="nvarchar" MaxLength="12" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblProRelImg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TblProRelImg">
+    <Key>
+      <PropertyRef Name="RPrdImgD" />
+    </Key>
+    <Property Name="RPrdImgD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrdID" Type="int" />
+    <Property Name="Image" Type="nvarchar" MaxLength="120" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TblRelProduct">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrdId" Type="int" />
+    <Property Name="RelatedPrdId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblSale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TblSale">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="BrndId" />
+      <PropertyRef Name="PrdId" />
+      <PropertyRef Name="Sale" />
+      <PropertyRef Name="ExFac" />
+      <PropertyRef Name="Discount" />
+      <PropertyRef Name="isactive" />
+      <PropertyRef Name="Created" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrndId" Type="int" Nullable="false" />
+    <Property Name="PrdId" Type="int" Nullable="false" />
+    <Property Name="Sale" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ExFac" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Discount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DiscountTillDate" Type="datetime" />
+    <Property Name="Sold" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SoldDate" Type="datetime" />
+    <Property Name="User" Type="nvarchar" MaxLength="200" />
+    <Property Name="isactive" Type="bit" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Modified" Type="datetime" />
+    <Property Name="Mod_Text" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RFahDBModel1StoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblBrand" EntityType="Self.TblBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblCategory" EntityType="Self.TblCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblProDetail" EntityType="Self.TblProDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TblProDetail].[Id] AS [Id], 
+    [TblProDetail].[PrdId] AS [PrdId], 
+    [TblProDetail].[Detail] AS [Detail], 
+    [TblProDetail].[Color] AS [Color], 
+    [TblProDetail].[Style] AS [Style]
+    FROM [dbo].[TblProDetail] AS [TblProDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TblProRelImg" EntityType="Self.TblProRelImg" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TblProRelImg].[RPrdImgD] AS [RPrdImgD], 
+    [TblProRelImg].[PrdID] AS [PrdID], 
+    [TblProRelImg].[Image] AS [Image]
+    FROM [dbo].[TblProRelImg] AS [TblProRelImg]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TblRelProduct" EntityType="Self.TblRelProduct" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TblRelProduct].[Id] AS [Id], 
+    [TblRelProduct].[PrdId] AS [PrdId], 
+    [TblRelProduct].[RelatedPrdId] AS [RelatedPrdId]
+    FROM [dbo].[TblRelProduct] AS [TblRelProduct]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TblSale" EntityType="Self.TblSale" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TblSale].[Id] AS [Id], 
+    [TblSale].[BrndId] AS [BrndId], 
+    [TblSale].[PrdId] AS [PrdId], 
+    [TblSale].[Sale] AS [Sale], 
+    [TblSale].[ExFac] AS [ExFac], 
+    [TblSale].[Discount] AS [Discount], 
+    [TblSale].[DiscountTillDate] AS [DiscountTillDate], 
+    [TblSale].[Sold] AS [Sold], 
+    [TblSale].[SoldDate] AS [SoldDate], 
+    [TblSale].[User] AS [User], 
+    [TblSale].[isactive] AS [isactive], 
+    [TblSale].[Created] AS [Created], 
+    [TblSale].[Modified] AS [Modified], 
+    [TblSale].[Mod_Text] AS [Mod_Text]
+    FROM [dbo].[TblSale] AS [TblSale]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

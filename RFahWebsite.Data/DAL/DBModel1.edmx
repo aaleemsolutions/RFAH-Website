@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RFahDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TblBrand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Img" Type="nvarchar" MaxLength="120" />
+          <Property Name="CatId" Type="int" Nullable="false" />
+          <Property Name="Isactive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TblCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar" MaxLength="120" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Isactive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblProDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblProDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PrdId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrdId" Type="int" Nullable="false" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="Color" Type="nvarchar" MaxLength="100" />
+          <Property Name="Style" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="TblProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Desc" Type="nvarchar" MaxLength="300" />
+          <Property Name="CatId" Type="int" />
+          <Property Name="BrdId" Type="int" Nullable="false" />
+          <Property Name="Img" Type="nvarchar" MaxLength="300" />
+          <Property Name="Prd_Barcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="Prd_FacCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" />
+          <Property Name="Mod_Text" Type="nvarchar(max)" />
+          <Property Name="Status" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblProRelImg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblProRelImg">
+          <Key>
+            <PropertyRef Name="RPrdImgD" />
+          </Key>
+          <Property Name="RPrdImgD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrdID" Type="int" />
+          <Property Name="Image" Type="nvarchar" MaxLength="120" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblRelProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrdId" Type="int" />
+          <Property Name="RelatedPrdId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="RFahDBModelStoreContainer">
+          <EntitySet Name="TblBrand" EntityType="Self.TblBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCategory" EntityType="Self.TblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProDetail" EntityType="Self.TblProDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblProDetail].[Id] AS [Id], 
+    [TblProDetail].[PrdId] AS [PrdId], 
+    [TblProDetail].[Detail] AS [Detail], 
+    [TblProDetail].[Color] AS [Color], 
+    [TblProDetail].[Style] AS [Style]
+    FROM [dbo].[TblProDetail] AS [TblProDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblProRelImg" EntityType="Self.TblProRelImg" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblProRelImg].[RPrdImgD] AS [RPrdImgD], 
+    [TblProRelImg].[PrdID] AS [PrdID], 
+    [TblProRelImg].[Image] AS [Image]
+    FROM [dbo].[TblProRelImg] AS [TblProRelImg]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TblRelProduct" EntityType="Self.TblRelProduct" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblRelProduct].[Id] AS [Id], 
+    [TblRelProduct].[PrdId] AS [PrdId], 
+    [TblRelProduct].[RelatedPrdId] AS [RelatedPrdId]
+    FROM [dbo].[TblRelProduct] AS [TblRelProduct]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RFahDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TblBrand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Img" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="CatId" Type="Int32" Nullable="false" />
+          <Property Name="Isactive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Isactive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Desc" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CatId" Type="Int32" />
+          <Property Name="BrdId" Type="Int32" Nullable="false" />
+          <Property Name="Img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Prd_Barcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Prd_FacCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Precision="3" />
+          <Property Name="Mod_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblProDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PrdId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrdId" Type="Int32" Nullable="false" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Style" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblProRelImg">
+          <Key>
+            <PropertyRef Name="RPrdImgD" />
+          </Key>
+          <Property Name="RPrdImgD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrdID" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblRelProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrdId" Type="Int32" />
+          <Property Name="RelatedPrdId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="RFahDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TblBrands" EntityType="Self.TblBrand" />
+          <EntitySet Name="TblCategories" EntityType="Self.TblCategory" />
+          <EntitySet Name="TblProducts" EntityType="Self.TblProduct" />
+          <EntitySet Name="TblProDetails" EntityType="Self.TblProDetail" />
+          <EntitySet Name="TblProRelImgs" EntityType="Self.TblProRelImg" />
+          <EntitySet Name="TblRelProducts" EntityType="Self.TblRelProduct" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RFahDBModelStoreContainer" CdmEntityContainer="RFahDBEntities">
+          <EntitySetMapping Name="TblBrands">
+            <EntityTypeMapping TypeName="RFahDBModel.TblBrand">
+              <MappingFragment StoreEntitySet="TblBrand">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCategories">
+            <EntityTypeMapping TypeName="RFahDBModel.TblCategory">
+              <MappingFragment StoreEntitySet="TblCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProducts">
+            <EntityTypeMapping TypeName="RFahDBModel.TblProduct">
+              <MappingFragment StoreEntitySet="TblProduct">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="CatId" ColumnName="CatId" />
+                <ScalarProperty Name="BrdId" ColumnName="BrdId" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="Prd_Barcode" ColumnName="Prd_Barcode" />
+                <ScalarProperty Name="Prd_FacCode" ColumnName="Prd_FacCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="Mod_Text" ColumnName="Mod_Text" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProDetails">
+            <EntityTypeMapping TypeName="RFahDBModel.TblProDetail">
+              <MappingFragment StoreEntitySet="TblProDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrdId" ColumnName="PrdId" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProRelImgs">
+            <EntityTypeMapping TypeName="RFahDBModel.TblProRelImg">
+              <MappingFragment StoreEntitySet="TblProRelImg">
+                <ScalarProperty Name="RPrdImgD" ColumnName="RPrdImgD" />
+                <ScalarProperty Name="PrdID" ColumnName="PrdID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRelProducts">
+            <EntityTypeMapping TypeName="RFahDBModel.TblRelProduct">
+              <MappingFragment StoreEntitySet="TblRelProduct">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrdId" ColumnName="PrdId" />
+                <ScalarProperty Name="RelatedPrdId" ColumnName="RelatedPrdId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
