@@ -164,6 +164,30 @@ warning 6002: The table/view 'RFahDB.dbo.TblSale' does not have a primary key de
     <Property Name="Modified" Type="datetime" />
     <Property Name="Mod_Text" Type="nvarchar(max)" />
   </EntityType>
+  <Association Name="FK__TblSale__BrndId__0E6E26BF">
+    <End Role="TblBrand" Type="Self.TblBrand" Multiplicity="1" />
+    <End Role="TblSale" Type="Self.TblSale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBrand">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TblSale">
+        <PropertyRef Name="BrndId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TblSale__PrdId__114A936A">
+    <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1" />
+    <End Role="TblSale" Type="Self.TblSale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblProduct">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblSale">
+        <PropertyRef Name="PrdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -271,6 +295,14 @@ warning 6002: The table/view 'RFahDB.dbo.TblSale' does not have a primary key de
     [TblSale].[Mod_Text] AS [Mod_Text]
     FROM [dbo].[TblSale] AS [TblSale]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK__TblSale__BrndId__0E6E26BF" Association="Self.FK__TblSale__BrndId__0E6E26BF">
+      <End Role="TblBrand" EntitySet="TblBrand" />
+      <End Role="TblSale" EntitySet="TblSale" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TblSale__PrdId__114A936A" Association="Self.FK__TblSale__PrdId__114A936A">
+      <End Role="TblProduct" EntitySet="TblProduct" />
+      <End Role="TblSale" EntitySet="TblSale" />
+    </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />

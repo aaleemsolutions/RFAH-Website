@@ -1,0 +1,41 @@
+﻿@{
+                /**/
+
+                Layout = null;
+}
+<style>
+    .ui-widget-content {
+        font-size: 16px;
+    }
+</style>
+@using (Ajax.BeginForm("SearchPartial", "Search", FormMethod.Post,
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        HttpMethod = "POST",
+        UpdateTargetId = "SearchQueryResult",
+        LoadingElementId = "loader",
+        OnSuccess = "SuccessFunction"
+        
+
+    }, new { @class = "form-search" })
+    )
+{
+    @*<form class="form-search">*@
+    <input type="text" class="input-text" name="TxtSearchQuery" id="txtsearch" placeholder="Search products..." autocomplete="on">
+    <div class="dropdown">
+        @Html.DropDownList("SearchCategory", null, new { @class = "form-control col-md-7 col-xs-12 fa fa-angle-down", required = "required", id = "CategoryDropDown", style = "margin:8px auto;border:0px !important" })
+    </div>
+    <button type="submit" class="btn btn-danger" id="DoSearchBtn">
+        <span class="fa fa-search"></span>
+    </button>
+    @*</form>*@
+
+}
+<script>
+    function SuccessFunction() {
+        //$(".featuredproductslider-container").hide();
+    }
+    
+   
+</script>

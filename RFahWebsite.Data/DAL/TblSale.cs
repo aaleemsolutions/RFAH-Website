@@ -28,5 +28,8 @@ namespace RFahWebsite.Data.DAL
         public System.DateTime Created { get; set; }
         public Nullable<System.DateTime> Modified { get; set; }
         public string Mod_Text { get; set; }
+    
+        public virtual TblBrand TblBrand { get; set; }
+        public virtual TblProduct TblProduct { get; set; }
     }
 }

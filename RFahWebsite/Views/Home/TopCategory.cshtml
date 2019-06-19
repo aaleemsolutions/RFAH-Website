@@ -1,7 +1,4 @@
-﻿@model IEnumerable<RFahWebsite.Data.DAL.TblCategory>
-
-
-
+﻿@model IEnumerable<RFahWebsite.Models.MasterModel>
 
 
 <div class="catlist">
@@ -11,8 +8,9 @@
         </div>
         <div class="row">
 
-            @foreach (var item in Model)
-            {
+           @foreach (var item in Model.GroupBy(x => x.Sales.PrdId).Select(u => u.First()))
+           {
+
                 <div class="col-md-3 col-sm-6">
                     <div class="row">
                         <div class="col-xs-6">
@@ -21,24 +19,28 @@
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="name-cat"><h3>@item.Name</h3></div>
-                            <a class="view-more" href="#">view more</a>
+                            <div class="name-cat"><h3>@item.Category.Name</h3></div>
+                            <a class="view-more" href="@item.Category.Id">view more</a>
                         </div>
                     </div>
                     <div class="list-cat">
                         <ul>
-                            <li><a href="#">Batteries &amp; Chargers</a></li>
-                            <li><a href="#">Headphone, Headset</a></li>
+                                @foreach (var sub1 in item.CategoryList.GroupBy(X=>X.ParentId==item.Category.Id).Select(u => u.First()))
+                                {
+                                    <li><a href="@sub1.Id">@sub1.Name </a></li>
+                                }
+                            @*<li><a href="#">Headphone, Headset</a></li>
                             <li><a href="#">Home Audio</a></li>
-                            <li><a href="#">Mp3 Player Accessories</a></li>
+                            <li><a href="#">Mp3 Player Accessories</a></li>*@
+
                         </ul>
                     </div>
                 </div>
-            }
+           }
 
 
 
 
-            </div>
+        </div>
     </div>
 </div><!-- /.catlist -->

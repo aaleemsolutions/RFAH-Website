@@ -14,6 +14,12 @@ namespace RFahWebsite.Data.DAL
     
     public partial class TblProduct
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblProduct()
+        {
+            this.TblSales = new HashSet<TblSale>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
@@ -27,5 +33,9 @@ namespace RFahWebsite.Data.DAL
         public Nullable<System.DateTime> Modified { get; set; }
         public string Mod_Text { get; set; }
         public string Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblSale> TblSales { get; set; }
+        public virtual TblCategory TblCategory { get; set; }
     }
 }

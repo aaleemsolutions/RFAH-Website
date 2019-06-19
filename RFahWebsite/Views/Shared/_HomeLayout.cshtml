@@ -8,13 +8,7 @@
     <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="HTMLCooker">
-    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
-    <!-- ================= Favicon ================== -->
-    <!-- Abdul Aleem Custom-->
-    <link href="~/Content/MyCustomCss.css" rel="stylesheet" />
-    <!-- Abdul Aleem Custom-->
     <!-- Standard -->
-
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
     <!-- Retina iPad Touch Icon-->
     <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
@@ -30,9 +24,12 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 
-
+    <!-- ================= Favicon ================== -->
+    <!-- Abdul Aleem Custom-->
+    <link href="~/Content/AjaxSearchFile/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/MyCustomCss.css" rel="stylesheet" />
+    <!-- Abdul Aleem Custom-->
     <!-- Font Awesome CSS -->
-
     <link href="~/Content/WebsiteAsset/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="~/Content/WebsiteAsset/css/bootstrap.min.css" rel="stylesheet" />
@@ -82,45 +79,45 @@
 
     <div class="header">
         @*<div class="topbar">
-            <div class="container">
-                <div class="topbar-left">
-                    <ul class="topbar-nav clearfix">
-                        <li><span class="phone">0(123) 456 789</span></li>
-                        <li><span class="email">info@plazathemes.com</span></li>
-                    </ul>
-                </div>
-                <div class="topbar-right">
+                <div class="container">
+                    <div class="topbar-left">
+                        <ul class="topbar-nav clearfix">
+                            <li><span class="phone">0(123) 456 789</span></li>
+                            <li><span class="email">info@plazathemes.com</span></li>
+                        </ul>
+                    </div>
+                    <div class="topbar-right">
 
-                    <ul class="topbar-nav clearfix">
-                        <li><a href="#" class="login">Login</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="account dropdown-toggle" data-toggle="dropdown">My Account</a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a title="My Account" href="account.html">My Account</a></li>
-                                <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
-                                <li><a title="My Cart" href="cart.html">My Cart</a></li>
-                                <li><a title="Checkout" href="checkout.html">Checkout</a></li>
-                                <li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="currency dropdown-toggle" data-toggle="dropdown">USD</a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Euro</a></li>
-                                <li><a href="#">US Dollar</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="language dropdown-toggle" data-toggle="dropdown"><img src="~/Content/WebsiteAsset/images/flag-us.png" alt=""> English</a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><img src="~/Content/WebsiteAsset/images/flag-us.png" alt=""> &nbsp;English</a></li>
-                                <li><a href="#"><img src="~/Content/WebsiteAsset/images/flag-spain.png" alt=""> &nbsp;Spanish</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                        <ul class="topbar-nav clearfix">
+                            <li><a href="#" class="login">Login</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="account dropdown-toggle" data-toggle="dropdown">My Account</a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a title="My Account" href="account.html">My Account</a></li>
+                                    <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
+                                    <li><a title="My Cart" href="cart.html">My Cart</a></li>
+                                    <li><a title="Checkout" href="checkout.html">Checkout</a></li>
+                                    <li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="currency dropdown-toggle" data-toggle="dropdown">USD</a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#">Euro</a></li>
+                                    <li><a href="#">US Dollar</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="language dropdown-toggle" data-toggle="dropdown"><img src="~/Content/WebsiteAsset/images/flag-us.png" alt=""> English</a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#"><img src="~/Content/WebsiteAsset/images/flag-us.png" alt=""> &nbsp;English</a></li>
+                                    <li><a href="#"><img src="~/Content/WebsiteAsset/images/flag-spain.png" alt=""> &nbsp;Spanish</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div> 
-        </div>*@ 
+            </div>*@
         <div class="header-bottom">
             <div class="container">
                 <div class="row">
@@ -156,8 +153,13 @@
                                 </div>
                             </div>
                         </div><!-- /.support-client -->
+                        @{
+                            Html.RenderAction("SearchPartial", "Search");
+                            <input type="hidden" id="MovieID" name="MovieID" />
+                            
+                        }
                         @*@Html.Partial("SearchPartialView");*@
-                        @*<div class="mini-cart">
+                        <div class="mini-cart">
                             <div class="top-cart-title">
                                 <a href="cart.html" class="dropdown-toggle" data-toggle="dropdown">
                                     your cart
@@ -183,7 +185,7 @@
                                                 <div class="mini-cart-price">$ 64.00</div>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                                     <div class="mini-cart-subtotal">Shipping: <span class="price">$5.00</span></div>
                                     <div class="mini-cart-subtotal">Total: <span class="price">$200.00</span></div>
                                     <div class="checkout-btn">
@@ -191,7 +193,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>*@
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -262,7 +264,7 @@
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <a href="#" class="ads"><img alt="" src="~/Content/WebsiteAsset/images/ads/ads-08.jpg" class="img-responsive"></a>
+                                                    @*<a href="#" class="ads"><img alt="" src="~/Content/WebsiteAsset/images/ads/ads-08.jpg" class="img-responsive"></a>*@
                                                 </div>
                                             </div>
                                         </li>
@@ -327,7 +329,7 @@
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <a href="#" class="ads"><img alt="" src="~/Content/WebsiteAsset/images/ads/ads-08.jpg" class="img-responsive"></a>
+                                                    @*<a href="#" class="ads"><img alt="" src="~/Content/WebsiteAsset/images/ads/ads-08.jpg" class="img-responsive"></a>*@
                                                 </div>
                                             </div>
                                         </li>
@@ -498,7 +500,7 @@
             </nav>
         </div><!-- /.header-bottom -->
     </div><!-- /.header -->
-    
+
     <div class="main">
 
         <div class="container">
@@ -555,7 +557,7 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="banner-left">
-                        <a href="#"> <img src="~/Content/WebsiteAsset/images/ads/ads-01.jpg" alt=""></a>
+                        @*<a href="#"> <img src="~/Content/WebsiteAsset/images/ads/ads-01.jpg" alt=""></a>*@
                         <div class="banner-content">
                             <h1>sale up to</h1>
                             <h2>20% off</h2>
@@ -1091,12 +1093,24 @@
 
 
         @{
-            Html.RenderAction("TopCategory");
+            <div id="TopCategory">
+                <div id="loader" style="display:none; margin:auto" class="text-center">
+                    <img src="~/Content/WebsiteAsset/images/AjaxLoader.gif" height="50" width="100" class="img-responsive center-block" />
+
+                </div>
+            </div>
+            //Html.RenderAction("TopCategory");
         }
 
 
         @{
-            Html.RenderAction("PopularBrand");
+            <div id="PopularBrand">
+                <div id="loader" style="display:none; margin:auto" class="text-center">
+                    <img src="~/Content/WebsiteAsset/images/AjaxLoader.gif" height="50" width="100" class="img-responsive center-block" />
+
+                </div>
+            </div>
+            //Html.RenderAction("PopularBrand");
         }
 
 
@@ -1214,20 +1228,18 @@
         </div><!-- /.footer -->
 
 
-
-
+        @*<script src="~/Scripts/jquery.js"></script>*@
         <script src="~/Content/WebsiteAsset/js/jquery-1.11.3.min.js"></script>
-        @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
-        <script src="~/Scripts/jquery-ui.min.js"></script>
+
+        <script src="~/Content/AjaxSearchFile/jquery-ui.min.js"></script>
+        <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
         <script src="~/Scripts/jquery.validate.min.js"></script>
         <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-
+        
         <!-- Bootstrap Js -->
         <script src="~/Scripts/bootstrap.min.js"></script>
         <!-- Nivo Slider Js -->
         <script src="~/Content/WebsiteAsset/js/owl.carousel.min.js"></script>
-
-        <script src="~/Content/WebsiteAsset/js/jquery-ui.min.js"></script>
 
         <script src="~/Content/WebsiteAsset/js/jquery.bxslider.min.js"></script>
 
@@ -1242,12 +1254,156 @@
 
 
         <script type="text/javascript">
-           $(function () {
-        $("#search").autocomplete({
-            source: '@Url.Action("GetProduct")',
-            minLength: 1
-        });
-    });
+            $(document).ready(function () {
+                //$("#txtsearch").autocomplete({
+                //    source: '/Search/SearchQuery/'
+                //});
+                $("#txtsearch").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '/Search/SearchQuery/',
+                            data: { "term": request.term },
+                            dataType: "json",
+                            type: "Get",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                response($.map(data, function (item) {
+                                    return item;
+                                }))
+                            },
+                            error: function (response) {
+                                alert(response.responseText);
+                            },
+                            failure: function (response) {
+                                alert(response.responseText);
+                            }
+                        });
+                    },
+
+                });
+
+                    //TopCategory
+
+                $.ajax({
+                    url: '@Url.Action("TopCategory", "Home")',
+                    dataType: "html",
+                    type: "Get",
+                    beforeSend: function () {
+                        $("#loader").show();
+
+                    },
+                    success: function (data) {
+                        
+                        $("#loader").hide();
+                        $('#TopCategory').append(data);
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Failed .');
+                    }
+
+                });
+                  
+                   $.ajax({
+                            url: '@Url.Action("NewArrival", "Home")',
+                            dataType: "html",
+                            type: "Get",
+                            beforeSend: function () {
+                                $("#loader1").show();
+
+                            },
+                            success: function (data) {
+                                $("#loader1").hide();
+                                $('#NewArrival').append(data);
+
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert('Failed .');
+                            }
+                   });
+                  //End\
+
+                  //Popular Brand
+                   $.ajax({
+                            url: '@Url.Action("PopularBrand", "Home")',
+                            dataType: "html",
+                            type: "Get",
+                            beforeSend: function () {
+                                $("#loader").show();
+
+                            },
+                            success: function (data) {
+                                $("#loader").hide();
+                                $('#PopularBrand').append(data);
+
+                            },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert('Failed .');
+                            }
+                   });
+                  //End\
+
+                  //Random Product
+                       $.ajax({
+                            url: '@Url.Action("RandomProduct", "Home")',
+                            dataType: "html",
+                           type: "Get",
+                            
+                            beforeSend: function () {
+                                $("#loader2").show();
+                              
+                           },
+                            
+                            success: function (data) {
+
+                                    
+                                $('#RandomProduct').append(data);
+                                loader
+                           },
+                           complete: function(data) {
+
+                               $("#loader2").hide();
+                               
+                               
+                           },
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                alert('Failed .');
+                            }
+                       });
+                  //End\
+                
+                 @*$('#DoSearchBtn').click(function () {
+                     var query = $("#txtsearch").val();
+                     var data = new FormData();
+                     data.append("TxtSearchQuery",query)
+                    $.ajax({
+                        url: '@Url.Action("SearchPartial", "Search")',
+                        data: data,
+                        type: "POST",
+                        beforeSend: function () {
+                            
+                            $("#loader").show();
+                        },
+                        success: function (data) {
+                            
+                            $("#loader").hide();
+                            $('#SearchResult').append(data);
+
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            
+                            alert('Failed .');
+                        }
+                    });
+                });*@
+                //show loader on Ajax.begin form
+                
+
+              
+            });
+
+            
+            
         /* Main Slideshow */
         jQuery(window).load(function () {
             jQuery(document).off('mouseenter').on('mouseenter', '.pos-slideshow', function (e) {
@@ -1256,7 +1412,7 @@
             jQuery(document).off('mouseleave').on('mouseleave', '.pos-slideshow', function (e) {
                 $('.ma-banner7-container .timethai').removeClass('pos_hover');
             });
-        });
+
         jQuery(window).load(function () {
             $('#ma-inivoslider-banner7').nivoSlider({
                 effect: 'random',
@@ -1280,10 +1436,9 @@
                 }
             });
         });
-        </script>
+            });
 
 
-        <script type="text/javascript">
             var dthen1 = new Date("06/01/2019 03:02:11 AM");
             start = "05/10/2019 03:02:11 AM";
             start_date = Date.parse(start);
@@ -1296,9 +1451,9 @@
 
             var iid1 = "countbox_1";
             CountBack_slider(gsecs1, "countbox_1", 1);
-        </script>
-        <!-- Hot Deals Timer 2-->
-        <script type="text/javascript">
+
+             //<!-- Hot Deals Timer 2-->
+
             var dthen2 = new Date("06/01/2019 03:02:11 AM");
             start = "05/10/2019 03:02:11 AM";
             start_date = Date.parse(start);
@@ -1311,9 +1466,9 @@
 
             var iid2 = "countbox_2";
             CountBack_slider(gsecs2, "countbox_2", 2);
-        </script>
 
-        <script type="text/javascript">
+
+
             var dthen3 = new Date("06/01/2019 03:02:11 AM");
             start = "05/15/2019 03:02:11 AM";
             start_date = Date.parse(start);

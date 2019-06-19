@@ -19,8 +19,8 @@ E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\bin\Debug\System.Dat
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\bin\Debug\EntityFramework.xml
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\bin\Debug\EntityFramework.SqlServer.xml
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\bin\Debug\EntityFramework.SqlServerCompact.xml
-E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.csprojAssemblyReference.cache
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.csproj.CoreCompileInputs.cache
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.csproj.CopyComplete
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.dll
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.pdb
+E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.csprojAssemblyReference.cache

@@ -14,11 +14,20 @@ namespace RFahWebsite.Data.DAL
     
     public partial class TblCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TblCategory()
+        {
+            this.TblProducts = new HashSet<TblProduct>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Image { get; set; }
         public Nullable<int> ParentId { get; set; }
         public bool Isactive { get; set; }
         public Nullable<System.DateTime> Created { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblProduct> TblProducts { get; set; }
     }
 }

@@ -20,6 +20,12 @@
         <AssociationConnector Association="RFahDBModel1.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="RFahDBModel1.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="RFahDBModel1.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="RFahDBModel1.FK__TblSale__BrndId__0E6E26BF" />
+        <AssociationConnector Association="RFahDBModel1.FK__TblSale__PrdId__114A936A" />
+        <AssociationConnector Association="RFahDBModel1.FK__TblProduc__CatId__14270015" />
+        <AssociationConnector Association="RFahDBModel1.FK__TblProduc__CatId__151B244E" />
+        <AssociationConnector Association="RFahDBModel1.FK__TblProduc__CatId__160F4887" />
+        <AssociationConnector Association="RFahDBModel1.FK__TblProduc__CatId__17036CC0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

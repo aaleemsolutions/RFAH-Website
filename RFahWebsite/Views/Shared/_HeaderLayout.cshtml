@@ -1,7 +1,5 @@
-﻿@{
-    Layout = null;
-}
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!doctype html>
+<html class="no-js" lang="en">
 <head>
     <title></title>
     <meta charset="utf-8">
@@ -10,12 +8,6 @@
     <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="HTMLCooker">
-    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
-    <!-- ================= Favicon ================== -->
-    <!-- Abdul Aleem Custom-->
-    <link href="~/Content/MyCustomCss.css" rel="stylesheet" />
-    <!-- Abdul Aleem Custom-->
-    <!-- Standard -->
 
     <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
     <!-- Retina iPad Touch Icon-->
@@ -32,12 +24,14 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 
-
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
     <!-- Font Awesome CSS -->
-
     <link href="~/Content/WebsiteAsset/css/font-awesome.min.css" rel="stylesheet" />
-    <!-- Bootstrap CSS -->
+
     <link href="~/Content/WebsiteAsset/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+
 
     <link href="~/Content/WebsiteAsset/css/jquery.bxslider.css" rel="stylesheet" />
 
@@ -52,7 +46,7 @@
 
     <link href="~/Content/WebsiteAsset/css/responsive.css" rel="stylesheet" />
 
-    <link href="~/Content/WebsiteAsset/css/nivo-slider.css" rel="stylesheet" />
+    <link href="~/content/websiteasset/css/nivo-slider.css" rel="stylesheet" />
     <!-- Animate CSS -->
     <!-- Owl Carousel CSS -->
     <!-- Main Style CSS -->
@@ -60,69 +54,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .ui-menu .ui-menu-item a {
-            color: #f00;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 0px;
-            border: 1px solid #454545;
-            border-bottom: 0px;
-        }
 
-            .ui-menu .ui-menu-item a:hover {
-                color: #000;
-                background: #fff;
-                font-weight: bold;
-                font-size: 20px;
-                border-radius: 0px;
-                border-image-outset: 1px solid #454545;
-            }
-    </style>
 </head>
 
 <body>
     <div class="header">
-        @*<div class="topbar">
-            <div class="container">
-                <div class="topbar-left">
-                    <ul class="topbar-nav clearfix">
-                        <li><span class="phone">0(123) 456 789</span></li>
-                        <li><span class="email">info@plazathemes.com</span></li>
-                    </ul>
-                </div>
-                <div class="topbar-right">
-
-                    <ul class="topbar-nav clearfix">
-                        <li><a href="#" class="login">Login</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="account dropdown-toggle" data-toggle="dropdown">My Account</a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a title="My Account" href="account.html">My Account</a></li>
-                                <li><a title="My Wishlist" href="wishlist.html">My Wishlist</a></li>
-                                <li><a title="My Cart" href="cart.html">My Cart</a></li>
-                                <li><a title="Checkout" href="checkout.html">Checkout</a></li>
-                                <li><a title="Testimonial" href="testimonial.html">Testimonial</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="currency dropdown-toggle" data-toggle="dropdown">USD</a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#">Euro</a></li>
-                                <li><a href="#">US Dollar</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="language dropdown-toggle" data-toggle="dropdown"><img src="~/Content/WebsiteAsset/images/flag-us.png" alt=""> English</a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><img src="~/Content/WebsiteAsset/images/flag-us.png" alt=""> &nbsp;English</a></li>
-                                <li><a href="#"><img src="~/Content/WebsiteAsset/images/flag-spain.png" alt=""> &nbsp;Spanish</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div> 
-        </div>*@ 
         <div class="header-bottom">
             <div class="container">
                 <div class="row">
@@ -264,7 +200,7 @@
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>
+                                                    @*<a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>*@
                                                 </div>
                                             </div>
                                         </li>
@@ -329,7 +265,7 @@
                                                         </div>
                                                     </div>
                                                     <br>
-                                                    <a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>
+                                                    @*<a href="#" class="ads"><img alt="" src="images/ads/ads-08.jpg" class="img-responsive"></a>*@
                                                 </div>
                                             </div>
                                         </li>
@@ -508,12 +444,15 @@
             </ul>
         </div>
     </div>
-    <div class="col-xs-12">
-        @RenderBody()
+    <div class="row">
+
+
+        <div class="col-xs-12">
+            @RenderBody()
+        </div>
     </div>
 
-
-    <div class="catlist">
+    <div class="catlist" style="z-index:-4444444">
         <div class="container">
             <div class="title-group1">
                 <h2>Top Categories</h2>
@@ -763,12 +702,12 @@
 
     <script src="~/Content/WebsiteAsset/js/jquery-1.11.3.min.js"></script>
     @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
-    <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
     <!-- Bootstrap Js -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
     <!-- Nivo Slider Js -->
     <script src="~/Content/WebsiteAsset/js/owl.carousel.min.js"></script>
 
@@ -786,92 +725,6 @@
 
 
 
-    <script type="text/javascript">
-           $(function () {
-        $("#search").autocomplete({
-            source: '@Url.Action("GetProduct")',
-            minLength: 1
-        });
-    });
-        /* Main Slideshow */
-        jQuery(window).load(function () {
-            jQuery(document).off('mouseenter').on('mouseenter', '.pos-slideshow', function (e) {
-                $('.ma-banner7-container .timethai').addClass('pos_hover');
-            });
-            jQuery(document).off('mouseleave').on('mouseleave', '.pos-slideshow', function (e) {
-                $('.ma-banner7-container .timethai').removeClass('pos_hover');
-            });
-        });
-        jQuery(window).load(function () {
-            $('#ma-inivoslider-banner7').nivoSlider({
-                effect: 'random',
-                slices: 15,
-                boxCols: 8,
-                boxRows: 4,
-                animSpeed: 1000,
-                pauseTime: 6000,
-                startSlide: 0,
-                controlNav: false,
-                controlNavThumbs: false,
-                pauseOnHover: true,
-                manualAdvance: false,
-                prevText: 'Prev',
-                nextText: 'Next',
-                afterLoad: function () {
-                },
-                beforeChange: function () {
-                },
-                afterChange: function () {
-                }
-            });
-        });
-    </script>
-
-
-    <script type="text/javascript">
-        var dthen1 = new Date("12/25/33 11:59:00 PM");
-        start = "08/04/15 03:02:11 AM";
-        start_date = Date.parse(start);
-        var dnow1 = new Date(start_date);
-        if (CountStepper > 0)
-            ddiff = new Date((dnow1) - (dthen1));
-        else
-            ddiff = new Date((dthen1) - (dnow1));
-        gsecs1 = Math.floor(ddiff.valueOf() / 1000);
-
-        var iid1 = "countbox_1";
-        CountBack_slider(gsecs1, "countbox_1", 1);
-    </script>
-    <!-- Hot Deals Timer 2-->
-    <script type="text/javascript">
-        var dthen2 = new Date("05/21/26 11:59:00 PM");
-        start = "08/04/15 03:02:11 AM";
-        start_date = Date.parse(start);
-        var dnow2 = new Date(start_date);
-        if (CountStepper > 0)
-            ddiff = new Date((dnow2) - (dthen2));
-        else
-            ddiff = new Date((dthen2) - (dnow2));
-        gsecs2 = Math.floor(ddiff.valueOf() / 1000);
-
-        var iid2 = "countbox_2";
-        CountBack_slider(gsecs2, "countbox_2", 2);
-    </script>
-
-    <script type="text/javascript">
-        var dthen3 = new Date("05/21/33 11:59:00 PM");
-        start = "08/04/15 03:02:11 AM";
-        start_date = Date.parse(start);
-        var dnow3 = new Date(start_date);
-        if (CountStepper > 0)
-            ddiff = new Date((dnow3) - (dthen3));
-        else
-            ddiff = new Date((dthen3) - (dnow3));
-        gsecs3 = Math.floor(ddiff.valueOf() / 1000);
-
-        var iid3 = "countbox_3";
-        CountBack_slider(gsecs3, "countbox_3", 3);
-    </script>
 </body>
 </html>
 
