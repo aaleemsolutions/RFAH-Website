@@ -4,7 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RFahDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RFahDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RFahDB.dbo.TblAddToCart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblAddToCart">
+          <Key>
+            <PropertyRef Name="CartID" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="TblBrand">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,10 +89,29 @@ warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary 
           <Property Name="PrdId" Type="int" />
           <Property Name="RelatedPrdId" Type="int" />
         </EntityType>
+        <Association Name="FK__TblAddToC__Produ__282DF8C2">
+          <End Role="TblProduct" Type="Self.TblProduct" Multiplicity="1" />
+          <End Role="TblAddToCart" Type="Self.TblAddToCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblAddToCart">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="RFahDBModelStoreContainer">
           <EntitySet Name="TblBrand" EntityType="Self.TblBrand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblProduct" EntityType="Self.TblProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblAddToCart" EntityType="Self.TblAddToCart" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblAddToCart].[CartID] AS [CartID], 
+    [TblAddToCart].[ProductId] AS [ProductId], 
+    [TblAddToCart].[UserId] AS [UserId]
+    FROM [dbo].[TblAddToCart] AS [TblAddToCart]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="TblProDetail" EntityType="Self.TblProDetail" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [TblProDetail].[Id] AS [Id], 
@@ -105,9 +135,12 @@ warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary 
     [TblRelProduct].[RelatedPrdId] AS [RelatedPrdId]
     FROM [dbo].[TblRelProduct] AS [TblRelProduct]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__TblAddToC__Produ__282DF8C2" Association="Self.FK__TblAddToC__Produ__282DF8C2">
+            <End Role="TblProduct" EntitySet="TblProduct" />
+            <End Role="TblAddToCart" EntitySet="TblAddToCart" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RFahDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -150,6 +183,7 @@ warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary 
           <Property Name="Modified" Type="DateTime" Precision="3" />
           <Property Name="Mod_Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblAddToCarts" Relationship="RFahDBModel.FK__TblAddToC__Produ__282DF8C2" FromRole="TblProduct" ToRole="TblAddToCart" />
         </EntityType>
         <EntityType Name="TblProDetail">
           <Key>
@@ -185,7 +219,34 @@ warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary 
           <EntitySet Name="TblProDetails" EntityType="Self.TblProDetail" />
           <EntitySet Name="TblProRelImgs" EntityType="Self.TblProRelImg" />
           <EntitySet Name="TblRelProducts" EntityType="Self.TblRelProduct" />
+          <EntitySet Name="TblAddToCarts" EntityType="RFahDBModel.TblAddToCart" />
+          <AssociationSet Name="FK__TblAddToC__Produ__282DF8C2" Association="RFahDBModel.FK__TblAddToC__Produ__282DF8C2">
+            <End Role="TblProduct" EntitySet="TblProducts" />
+            <End Role="TblAddToCart" EntitySet="TblAddToCarts" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TblAddToCart">
+          <Key>
+            <PropertyRef Name="CartID" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblProduct" Relationship="RFahDBModel.FK__TblAddToC__Produ__282DF8C2" FromRole="TblAddToCart" ToRole="TblProduct" />
+        </EntityType>
+        <Association Name="FK__TblAddToC__Produ__282DF8C2">
+          <End Type="RFahDBModel.TblProduct" Role="TblProduct" Multiplicity="1" />
+          <End Type="RFahDBModel.TblAddToCart" Role="TblAddToCart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblAddToCart">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -261,6 +322,15 @@ warning 6002: The table/view 'RFahDB.dbo.TblRelProduct' does not have a primary 
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PrdId" ColumnName="PrdId" />
                 <ScalarProperty Name="RelatedPrdId" ColumnName="RelatedPrdId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblAddToCarts">
+            <EntityTypeMapping TypeName="RFahDBModel.TblAddToCart">
+              <MappingFragment StoreEntitySet="TblAddToCart">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

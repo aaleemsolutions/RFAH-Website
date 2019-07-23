@@ -29,5 +29,6 @@ namespace RFahWebsite.Data.DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TblProduct> TblProducts { get; set; }
+        public virtual ICollection<TblBrand> TblBrands { get; set; }
     }
 }

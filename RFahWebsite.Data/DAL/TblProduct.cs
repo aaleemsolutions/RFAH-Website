@@ -35,6 +35,7 @@ namespace RFahWebsite.Data.DAL
         public string Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TblBrand> TblBrands { get; set; }
         public virtual ICollection<TblSale> TblSales { get; set; }
         public virtual TblCategory TblCategory { get; set; }
     }

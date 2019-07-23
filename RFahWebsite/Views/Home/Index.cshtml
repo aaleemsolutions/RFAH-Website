@@ -3,16 +3,23 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
+
+
+
 }
+
+<h2>@ViewBag.UserIp</h2>
 <div class="col-sm-12 col-right">
 
     <div id="SearchQueryResult">
-        <div id="loader" style="display:none;margin:auto" class="text-center">
+        <div id="SearchLoader" style="display:none;margin:auto" class="text-center">
             <img src="~/Content/WebsiteAsset/images/AjaxLoader.gif" height="100" width="150" class="img-responsive center-block" />
         </div>
+        <div id="SearchContent">
 
+        </div>
     </div>
-    
+
     <div class="featuredproductslider-container">
         <div class="title-group1"><h2>Featured Brand</h2></div>
         <div id="featured-products" class="owl-container">
@@ -100,11 +107,4 @@
     </div>
 
 </div><!-- /.col-right -->
-    
-    <script>
-     
-     
-        @*$('#RandomProduct').load('@Url.Action("RandomProduct", "Home")');*@
 
-
-    </script>

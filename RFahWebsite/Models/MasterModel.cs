@@ -34,6 +34,10 @@ namespace RFahWebsite.Models
 
         public IEnumerable<TblProduct> ProductList { get; set; }
 
+        public IEnumerable<TblRelProduct> RelatedProduct { get; set; }
+        public IEnumerable<TblProduct> RelatedProductsDetail{ get; set; }
+
+
         //Top CategoryName
         public string name { get; set; }
 

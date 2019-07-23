@@ -43,5 +43,10 @@ namespace RFahWebsite.Logics
             return selectListItems;
         }
 
+        internal void AddToCart(List<String> listcookie)
+        {
+
+        }
+
     }
 }

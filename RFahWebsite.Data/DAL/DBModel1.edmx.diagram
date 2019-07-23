@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="RFahDBModel.TblProDetail" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RFahDBModel.TblProRelImg" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RFahDBModel.TblRelProduct" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RFahDBModel.TblAddToCart" Width="1.5" PointX="8.375" PointY="5.125" />
+        <AssociationConnector Association="RFahDBModel.FK__TblAddToC__Produ__282DF8C2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

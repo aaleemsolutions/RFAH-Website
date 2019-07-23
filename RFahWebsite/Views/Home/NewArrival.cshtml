@@ -1,106 +1,336 @@
 ﻿@model RFahWebsite.Models.MasterModel
 
-@{ 
+@{
     Layout = null;
 }
-        <div class="newproductslider-container">
-            <div class="title-group1"><h2>New Arrivals <span>@DateTime.Now.ToString("MMMM")</span> & <span>@DateTime.Now.AddMonths(-1).ToString("MMMM")</span> </h2></div>
-            <div id="new-products" class="owl-container">
-                <div class="owl">
-                    @foreach (var item in Model.ProductList)
-                    {
-                    <div class="col-sm-4">
-                        <div class='productslider-item item'>
-                            <div class="item-inner">
-                                <div class="images-container">
-                                    <div class="product_icon">
-                                        <div class='new-icon'><span>new</span></div>
-                                        <div class="sale-icon"><span>sale</span></div>
-                                    </div>
-                                    <a href="@Url.Action("Productdetail","Home",new { id= item.ID})" title="Nunc facilisis" class="product-image">
-                                        <img src="~/Content/WebsiteAsset/images/products/1.jpg" alt="Nunc facilisis" />
-                                    </a>
-                                    <div class="box-hover">
-                                        <ul class="add-to-links">
-                                            <li><a href="#" class="link-quickview">Quick View</a></li>
-                                            <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-                                            <li><a href="#" class="link-compare">Add to Compare</a></li>
-                                            <li><a href="#" class="link-cart">Add to Cart</a></li>
-                                        </ul>
-                                    </div>
+
+
+
+@*<link href="~/Content/QuickViewAssets/css/QuickViewReset.css" rel="stylesheet" />
+    <link href="~/Content/QuickViewAssets/css/QuickViewStyle.css" rel="stylesheet" />
+    <script src="~/Content/QuickViewAssets/js/QuickViewmodernizr.js"></script>
+    <script src="~/Content/QuickViewAssets/js/QuickViewMain.js"></script>
+    <script src="~/Content/QuickViewAssets/js/QuickViewVelocity.min.js"></script>*@
+
+
+@*<link href="~/Content/ZoomImages/css/normalize.css" rel="stylesheet" />
+
+    <link href="~/Content/ZoomImages/css/foundation.css" rel="stylesheet" />
+
+    <link href="~/Content/ZoomImages/css/demo.css" rel="stylesheet" />*@
+
+
+
+
+
+@*<link href="~/Content/ZoomImages/fancybox/source/jquery.fancybox.css" rel="stylesheet" />*@
+<link href="~/Content/ZoomImages/css/xzoom.css" rel="stylesheet" />
+
+<link href="~/Content/ZoomImages/magnific-popup/css/magnific-popup.css" rel="stylesheet" />
+
+@*<script src="~/Content/ZoomImages/fancybox/source/jquery.fancybox.js"></script>*@
+<script src="~/Content/ZoomImages/dist/xzoom.min.js"></script>
+<script src="~/Content/ZoomImages/js/setup.js"></script>
+<script src="~/Content/ZoomImages/js/foundation.min.js"></script>
+<script src="~/Content/ZoomImages/hammer.js/1.0.5/jquery.hammer.min.js"></script>
+<script src="~/Content/ZoomImages/magnific-popup/js/magnific-popup.js"></script>
+
+<style>
+    @@media  (min-width:768px) {
+        .modal-dialog {
+            width: 988px;
+            margin: 30px auto;
+        }
+    }
+
+    img#xzoom-fancy {
+        max-width: 240px;
+    }
+
+    .fancybox-wrap.fancybox-desktop.fancybox-type-image.fancybox-opened {
+        /*z-index: 2000 !important;*/
+        display: none;
+    }
+
+    .fancybox-wrap.fancybox-desktop.fancybox-type-image.fancybox-opened {
+        left: 137px !important;
+    }
+
+    .xzoom-preview {
+        z-index: 2001;
+    }
+
+    .xzoom-source, .xzoom-hidden {
+        z-index: 2001;
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+
+    div#modal-popup {
+        z-index: 2000;
+    }
+
+    .mega-container {
+        position: relative;
+        z-index: 1999;
+    }
+</style>
+
+<div class="newproductslider-container">
+    <div class="title-group1"><h2>New Arrivals <span>@DateTime.Now.ToString("MMMM")</span> & <span>@DateTime.Now.AddMonths(-1).ToString("MMMM")</span> </h2></div>
+    <div id="new-products" class="owl-container">
+        <div class="owl row">
+            @foreach (var item in Model.ProductList)
+            {
+                <div class="col-sm-4">
+                    <div class='productslider-item item'>
+                        <div class="item-inner">
+                            <div class="images-container">
+                                <div class="product_icon">
+                                    <div class='new-icon'><span>new</span></div>
+                                    <div class="sale-icon"><span>sale</span></div>
                                 </div>
-                                <div class="des-container">
-                                    <h2 class="product-name"><a href="@Url.Action("Productdetail","Home",new { id= item.ID})" title="Nunc facilisis">@item.Name</a></h2>
-                                    <div class="price-box">
-                                        <p class="special-price">
-                                            <span class="price-label">Special Price</span>
-                                            <span class="price">$169.99</span>
-                                        </p>
-                                        <p class="old-price">
-                                            <span class="price-label">Regular Price: </span>
-                                            <span class="price">$189.00</span>
-                                        </p>
+                                <a href="@Url.Action("Productdetail", "Home", new { id = item.ID })" title="Nunc facilisis" class="product-image">
+                                    <div id="image-div">
+                                        <img src="~/Content/WebsiteAsset/images/products/1.jpg" alt="Nunc facilisis" />
                                     </div>
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:67%"></div>
-                                        </div>
-                                        <span class="amount"><a href="#">3 Review(s)</a></span>
-                                    </div>
+                                </a>
+                                <div class="box-hover">
+                                    <ul class="add-to-links">
+                                        <li class="">
+
+                                            @*<a href="" id="@item.ID" onclick="return false" class="link-quickview cd-trigger QuickView">Quick View</a>*@
+                                            <a id="@item.ID" onclick="return false" class="link-quickview QuickView" href="#modal-popup" role="button" data-toggle="modal">Quick View</a>
+                                            @*<a id="modal-220188" href="#modal-popup" role="button" class="btn" data-toggle="modal">Launch demo modal</a>*@
+
+                                            @*<button class="link-quickview cd-trigger QuickView" id="@item.ID" value="@item.ID">Quick View</button>*@
+                                        </li>
+                                        <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
+                                        <li><a href="#" class="link-compare">Add to Compare</a></li>
+                                        <li>
+                                            <a href="" onclick="return false" class="link-cart" id="AddToCart">Add to Cart</a>
+                                            @*<button id="AddToCart" class="link-cart" type="button" value="@item.ID">Add To Cart</button>*@
+                                        </li>
+
+
+
+                                    </ul>
                                 </div>
                             </div>
+                            <div class="des-container">
+                                <h2 class="product-name"><a href="@Url.Action("Productdetail","Home",new { id= item.ID})" title="Nunc facilisis">@item.Name</a></h2>
+                                <div class="price-box">
+                                    <p class="special-price">
+                                        <span class="price-label">Special Price</span>
+                                        <span class="price">$169.99</span>
+                                    </p>
+                                    <p class="old-price">
+                                        <span class="price-label">Regular Price: </span>
+                                        <span class="price">$189.00</span>
+                                    </p>
+                                </div>
+                                <div class="ratings">
+                                    <div class="rating-box">
+                                        <div class="rating" style="width:67%"></div>
+                                    </div>
+                                    <span class="amount"><a href="#">3 Review(s)</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div id="QuickViewProductArea">
+
+                <div class="modal fade" id="modal-popup" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                @*<h4 class="modal-title" id="myModalLabel">
+                                        Modal title
+                                    </h4>*@
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-xs-12">
+
+
+
+                                    <div class="cd-quick-view">
+                                        <div class="col-md-4">
+
+                                            <div class="xzoom-container">
+                                                <div id="FancyMainImg">
+                                                    <img class="xzoom4" id="xzoom-fancy" src="/Content/ZoomImages/images/gallery/preview/01_b_car.jpg" xoriginal="/Content/ZoomImages/images/gallery/preview/01_b_car.jpg" />
+                                                </div>
+
+                                                <div class="xzoom-thumbs" id="RelatedImages">
+
+                                                    <a href="../Content/ZoomImages/images/gallery/original/01_b_car.jpg">
+                                                        <img class="xzoom-gallery4" width="80" src="~/Content/ZoomImages/images/gallery/thumbs/01_b_car.jpg" xpreview="~/Content/ZoomImages/images/gallery/preview/01_b_car.jpg" title="The description goes here">
+                                                    </a>
+                                                    <a href="../Content/ZoomImages/images/gallery/original/02_o_car.jpg"><img class="xzoom-gallery4" width="80" src="~/Content/ZoomImages/images/gallery/preview/02_o_car.jpg" title="The description goes here"></a>
+                                                    <a href="../Content/ZoomImages/images/gallery/original/03_r_car.jpg"><img class="xzoom-gallery4" width="80" src="~/Content/ZoomImages/images/gallery/preview/03_r_car.jpg" title="The description goes here"></a>
+                                                    <a href="../Content/ZoomImages/images/gallery/original/04_g_car.jpg"><img class="xzoom-gallery4" width="80" src="~/Content/ZoomImages/images/gallery/preview/04_g_car.jpg" title="The description goes here"></a>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-md-8">
+
+                                            <div class="product-shop col-sm-12">
+                                                <div class="product-name">
+                                                    <h2 id="QuickName"></h2>
+                                                </div>
+                                                <div class="ratings">
+                                                    <div class="rating-box">
+                                                        <div style="width:67%" class="rating"></div>
+                                                    </div>
+                                                    <span class="amount"><a href="#">1 Review(s)</a></span>
+                                                </div>
+                                                <div class="box-container2">
+                                                    <div class="price-box">
+                                                        <p class="special-price">
+                                                            <span class="price-label">Special Price</span>
+                                                            <span id="product-price-1" class="price">$99.00</span>
+                                                        </p>
+                                                        <p class="old-price">
+                                                            <span class="price-label">Regular Price:</span>
+                                                            <span id="old-price-1" class="price">$170.00</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="short-description">
+                                                    <div class="std">Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis.</div>
+                                                </div>
+                                                <p class="availability in-stock">Availability: <span>In stock</span></p>
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 col-sm-3 control-label">Size <em>*</em></label>
+                                                        <div class="col-sm-7">
+                                                            <select class="form-control">
+                                                                <option value="">-- Please Select --</option>
+                                                                <option value="2">L +$2.00</option>
+                                                                <option value="1">M +$1.00</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 col-sm-3 control-label">Color <em>*</em></label>
+                                                        <div class="col-sm-7">
+                                                            <select class="form-control">
+                                                                <option value="">-- Please Select --</option>
+                                                                <option value="4">black +$2.00</option>
+                                                                <option value="3">blue +$1.00</option>
+                                                                <option value="5">yellow +$1.00</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 col-sm-3 control-label">Quantity:</label>
+                                                        <div class="col-md-3 col-sm-5">
+                                                            <div class="input-group qty">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn" type="button">-</button>
+                                                                </span>
+                                                                <input type="text" class="form-control" value="3">
+                                                                <span class="input-group-btn">
+                                                                    <button class="btn" type="button">+</button>
+                                                                </span>
+                                                            </div><!-- /input-group -->
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-danger btn-cart">Add to cart</button>
+                                                    <button type="button" class="btn btn-default btn-wishlist">Add to wishlist</button>
+                                                    <button type="button" class="btn btn-default btn-compare">Add to compare</button>
+                                                </form>
+
+                                            </div>
+
+                                        </div> <!-- cd-quick-view -->
+
+                                    </div>
+
+                                </div>
+                                dsadsasda
+                                @*<div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>*@
+                            </div>
+
                         </div>
 
                     </div>
 
-                    }
-
-                    <div>
-                        @*<div class='productslider-item item'>
-                                <div class="item-inner">
-                                    <div class="images-container">
-                                        <div class="product_icon">
-                                            <div class='new-icon'><span>new</span></div>
-                                            <div class="sale-icon"><span>sale</span></div>
-                                        </div>
-                                        <a href="#" title="Nunc facilisis" class="product-image">
-                                            <img src="~/Content/WebsiteAsset/images/products/3.jpg" alt="Nunc facilisis" />
-                                        </a>
-                                        <div class="box-hover">
-                                            <ul class="add-to-links">
-                                                <li><a href="#" class="link-quickview">Quick View</a></li>
-                                                <li><a href="#" class="link-wishlist">Add to Wishlist</a></li>
-                                                <li><a href="#" class="link-compare">Add to Compare</a></li>
-                                                <li><a href="#" class="link-cart">Add to Cart</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="des-container">
-                                        <h2 class="product-name"><a href="#" title="Nunc facilisis">Demonstraverunt lectores</a></h2>
-                                        <div class="price-box">
-                                            <p class="special-price">
-                                                <span class="price-label">Special Price</span>
-                                                <span class="price">$169.99</span>
-                                            </p>
-                                            <p class="old-price">
-                                                <span class="price-label">Regular Price: </span>
-                                                <span class="price">$189.00</span>
-                                            </p>
-                                        </div>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:67%"></div>
-                                            </div>
-                                            <span class="amount"><a href="#">3 Review(s)</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>*@
-                    </div>
-
                 </div>
-            </div>
-        </div><!-- /.newproductslider-container -->
 
-   
-   
+
+
+            </div>
+        </div>
+    </div><!-- /.newproductslider-container -->
+
+
+
+    <script>
+    $(document).ready(function () {
+        $('.QuickView').click(function () {
+
+            var QuickView = this.id;
+
+                            $.ajax({
+                                url: '@Url.Action("JsonQuick", "Home")',
+                                data: { "QuickId": QuickView },
+                                type: "Get",
+                                dataType: "Json",
+
+                                beforeSend: function () {
+
+                                },
+                                success: function (data) {
+                                    //$("#QuickViewProductArea").append(data);
+
+                                    $("#QuickName").html(data.Name);
+                                    $("#xzoom-fancy").attr("src", "/Content/ZoomImages/images/gallery/preview/" + data.Image);
+                                    $("#xzoom-fancy").attr("xoriginal", "/Content/ZoomImages/images/gallery/preview/" + data.Image);
+
+
+                                    //MainImg = '<img class="xzoom4" id="xzoom-fancy" src="../Content/ZoomImages/images/gallery/preview/' + item.Image + '" " xoriginal="../Content/ZoomImages/images/gallery/preview/' + item.Image + '"" />';
+                                    //$("MainImg").appendTo('#FancyMainImg');
+
+                                    var checkBox = "";
+                                    //$("#RelatedImages").empty();
+                                    $.each(data.RelatedImages, function (key, item) {
+
+                                        if (key == 0) {
+                                            checkBox = '<a href="/Content/ZoomImages/images/gallery/original/' + item.Image + '"><img class="xzoom-gallery4" width="80" src="/Content/ZoomImages/images/gallery/preview/' + item.Image + '" xpreview="/Content/ZoomImages/images/gallery/preview/' + item.Image+'" title="The description goes here"></a>';
+                                        } else {
+
+                                            checkBox = '<a href="/Content/ZoomImages/images/gallery/original/' + item.Image + '" onclick="return false"><img class="xzoom-gallery4" width="80" src="/Content/ZoomImages/images/gallery/preview/' + item.Image + '" title="The description goes here"></a>';
+                                            //<a href="../Content/ZoomImages/images/gallery/original/04_g_car.jpg"><img class="xzoom-gallery4" width="80" src="~/Content/ZoomImages/images/gallery/preview/04_g_car.jpg" title="The description goes here"></a>
+
+                                        }
+
+
+                                        $(checkBox).appendTo('#RelatedImages');
+                                    });
+
+
+                                },
+
+                                error: function (xhr, ajaxOptions, thrownError,) {
+                                    alert('Failed To Quick View.'  + thrownError);
+                                }
+                            });
+                        });
+
+    });
+
+
+
+    </script>

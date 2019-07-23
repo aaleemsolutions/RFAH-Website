@@ -30,7 +30,7 @@ namespace RFahWebsite.Controllers
         [HttpPost]
         public ActionResult SearchPartial(string TxtSearchQuery,string SearchCategory)
         {
-            Thread.Sleep(3000);
+            
             int CatId = 0;
             CatId = Convert.ToInt32(SearchCategory);
             ViewBag.SearchCategory = logics.Category();
@@ -49,11 +49,8 @@ namespace RFahWebsite.Controllers
         [HttpGet]
         public JsonResult SearchQuery(string term)
        {
-            List<string> Product = DbObject.TblProducts.Where(s => s.Name.StartsWith(term) || s.Name.Contains(term))
-            .Select(x =>x.Name).ToList();
-
-            
-
+            List<string> Product = DbObject.TblProducts.GroupBy(s=>s.Name).Where(s => s.Key.StartsWith(term) || s.Key.Contains(term))
+            .Select(x =>x.Key).ToList();
             return Json(Product, JsonRequestBehavior.AllowGet);
 
         }

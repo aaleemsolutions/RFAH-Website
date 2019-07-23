@@ -23,4 +23,3 @@ E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsit
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.csproj.CopyComplete
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.dll
 E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.pdb
-E:\Aleem_Data\WaqarBhai\RFahWebsite\latest\RFahWebsite.Data\obj\Debug\RFahWebsite.Data.csprojAssemblyReference.cache

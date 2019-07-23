@@ -17,8 +17,9 @@ namespace RFahWebsite.Controllers
         {
             model = new MasterModel();
             DbObject = new RFahDBEntities1();
+            
         }
-
+        
         public ActionResult Index()
         {
             //var tt= DbObject.TblBrands.Where(m => m.Isactive == true && m.Img != "").ToList();
@@ -55,23 +56,37 @@ namespace RFahWebsite.Controllers
             model.Product = DbObject.TblProducts.Where(i => i.IsActive == true && i.ID == id).SingleOrDefault();
             model.Brand = DbObject.TblBrands.Where(i => i.Isactive== true && i.Id == id).SingleOrDefault();
             model.RelatedImages = DbObject.TblProRelImgs.Where(i=>i.PrdID == id).ToList();
+            model.RelatedProduct = DbObject.TblRelProducts.Where(m => m.PrdId == id).ToList();
+            model.RelatedProductsDetail = DbObject.TblProducts.Where(m => m.IsActive == true).ToList();
+            if (model.RelatedProduct==null)
+            {
+
+            }
             return View(model);
         }
-
         public PartialViewResult SubBanner()
         {
             return PartialView();
         }
-        
-        public PartialViewResult NewArrival()
+        public ActionResult NewArrival()
         {
-           Thread.Sleep(3000);
+           //Thread.Sleep(3000);
             model.ProductList = DbObject.TblProducts.Where(m => m.IsActive == true && m.Status == "inv" && m.Img != "" && m.Created.Month==DateTime.Now.Month || m.Created.Month==DateTime.Now.Month-1).OrderByDescending(m=>m.Created.Month).ToList();
+            
+            
             return PartialView(model);
+        }
+        public JsonResult JsonQuick(int QuickId)
+        {
+            model.Product = DbObject.TblProducts.Where(m => m.IsActive && m.ID == QuickId).SingleOrDefault();
+            model.RelatedImages = DbObject.TblProRelImgs.Where(i => i.PrdID == QuickId).ToList();
+            ViewBag.Name = model.Product.Name;
+            var product = new { Name = model.Product.Name, Image = model.Product.Img, RelatedImages = model.RelatedImages };
+            return Json(product, JsonRequestBehavior.AllowGet);
         }
         public PartialViewResult RandomProduct()
         {
-            Thread.Sleep(3000);
+         
             /*var demo = from a in DbObject.TblBrands.ToList()
                        join  b in DbObject.TblSales.ToList() on a.Id equals b.BrndId
 
@@ -131,7 +146,6 @@ namespace RFahWebsite.Controllers
         {
             return View();
         }
-
         public ActionResult ContactUs()
         {
             return View();
@@ -152,7 +166,27 @@ namespace RFahWebsite.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult AddtoCart(int CartId)
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public PartialViewResult QuickView(int QuickId)
+        {
+            model.Product = DbObject.TblProducts.Where(m => m.IsActive && m.ID == QuickId).SingleOrDefault();
+            model.RelatedImages = DbObject.TblProRelImgs.Where(i => i.PrdID == QuickId).ToList();
+            ViewBag.Name = model.Product.Name;
 
+            return PartialView(model);
+        }
+
+        public PartialViewResult SpecialOffer()
+        {
+
+            return PartialView();
+        }
 
     }
 }
